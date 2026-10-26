@@ -1,0 +1,457 @@
+{
+ "text": "Apollo 11 landed on the Moon on July 20, 1969. Neil Armstrong was the first person to walk on the Moon, followed by Buzz Aldrin. The mission carried a crew of four astronauts. Michael Collins stayed in orbit around the Moon. The spacecraft was launched by a Saturn V rocket from Kennedy Space Center.",
+ "result": {
+  "statements": [
+   {
+    "id": 1,
+    "statement": "Apollo 11 landed on the Moon on July 20, 1969.",
+    "quote": "Apollo 11 landed on the Moon on July 20, 1969.",
+    "mark": "verified",
+    "judges": [
+     {
+      "judge": "Amazon Nova",
+      "verdict": "verified",
+      "reason": "Multiple authoritative sources, including NASA and Wikipedia, confirm that Apollo 11 landed on the Moon on July 20, 1969.",
+      "source": "https://en.wikipedia.org/wiki/Apollo_11",
+      "changed": false,
+      "firstVerdict": "verified"
+     },
+     {
+      "judge": "Mistral Large",
+      "verdict": "verified",
+      "reason": "Multiple authoritative sources, including NASA and historical records, confirm the Apollo 11 Moon landing on July 20, 1969.",
+      "source": "https://www.nasa.gov/history/july-20-1969-one-giant-leap-for-mankind/",
+      "changed": false,
+      "firstVerdict": "verified"
+     },
+     {
+      "judge": "OpenAI gpt-oss",
+      "verdict": "verified",
+      "reason": "All reliable sources confirm the landing date of July\u202f20,\u202f1969",
+      "source": "https://www.nasa.gov/history/july-20-1969-one-giant-leap-for-mankind/",
+      "changed": false,
+      "firstVerdict": "verified"
+     }
+    ],
+    "sources": [
+     {
+      "url": "https://en.wikipedia.org/wiki/Apollo_11",
+      "title": "wikipedia.org"
+     },
+     {
+      "url": "https://www.nasa.gov/centers-and-facilities/kennedy/50-years-ago-apollo-astronauts-land-take-first-steps-on-moon/",
+      "title": "nasa.gov"
+     },
+     {
+      "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-059C",
+      "title": "nasa.gov"
+     },
+     {
+      "url": "https://www.nasa.gov/history/july-20-1969-one-giant-leap-for-mankind/",
+      "title": "nasa.gov"
+     },
+     {
+      "url": "https://airandspace.si.edu/explore/stories/apollo-11-moon-landing",
+      "title": "si.edu"
+     },
+     {
+      "url": "https://airandspace.si.edu/apollo-11-timeline",
+      "title": "si.edu"
+     },
+     {
+      "url": "https://www.britannica.com/topic/Apollo-11",
+      "title": "britannica.com"
+     }
+    ],
+    "evidence": "The statement that Apollo 11 landed on the Moon on July 20, 1969, is supported by multiple reliable sources.\n\nMultiple sources confirm that Apollo 11, commanded by Neil Armstrong with Buzz Aldrin and Michael Collins, landed on the Moon on July 20, 1969. The lunar module, named *Eagle*, touched down in the Sea of Tranquility at 20:17 UTC (4:17 p.m. EDT) on that date. \n\nArmstrong and Aldrin became the first humans to walk on the lunar surface, with Armstrong famously declaring, \u201cThat\u2019s one small step for [a] man, one giant leap for mankind\u201d upon first stepping onto the Moon. \n\nThe mission was a landmark achievement in human space exploration and is widely documented by NASA and historical records.",
+    "searchError": null
+   },
+   {
+    "id": 2,
+    "statement": "Neil Armstrong was the first person to walk on the Moon.",
+    "quote": "Neil Armstrong was the first person to walk on the Moon,",
+    "mark": "verified",
+    "judges": [
+     {
+      "judge": "Amazon Nova",
+      "verdict": "verified",
+      "reason": "Multiple authoritative sources including NASA, Britannica, and History.com confirm that Neil Armstrong was the first person to walk on the Moon during the Apollo 11 mission on July 20, 1969.",
+      "source": "https://en.wikipedia.org/wiki/Neil_Armstrong",
+      "changed": false,
+      "firstVerdict": "verified"
+     },
+     {
+      "judge": "Mistral Large",
+      "verdict": "verified",
+      "reason": "NASA and multiple authoritative sources consistently confirm Neil Armstrong was the first person to walk on the Moon on July 20, 1969.",
+      "source": "https://www.nasa.gov/audience/forstudents/k-4/stories/first-person-on-moon.html",
+      "changed": false,
+      "firstVerdict": "verified"
+     },
+     {
+      "judge": "OpenAI gpt-oss",
+      "verdict": "verified",
+      "reason": "All reliable sources and NASA records confirm Armstrong was the first to walk on the Moon on July 20, 1969",
+      "source": "https://www.nasa.gov/audience/forstudents/k-4/stories/first-person-on-moon.html",
+      "changed": false,
+      "firstVerdict": "verified"
+     }
+    ],
+    "sources": [
+     {
+      "url": "https://en.wikipedia.org/wiki/Neil_Armstrong",
+      "title": "wikipedia.org"
+     },
+     {
+      "url": "https://en.wikipedia.org/wiki/Apollo_11",
+      "title": "wikipedia.org"
+     },
+     {
+      "url": "https://www.britannica.com/biography/Neil-Armstrong",
+      "title": "britannica.com"
+     },
+     {
+      "url": "https://kids.britannica.com/scholars/article/Neil-Armstrong/9549",
+      "title": "britannica.com"
+     },
+     {
+      "url": "https://www.history.com/articles/neil-armstrong",
+      "title": "history.com"
+     },
+     {
+      "url": "https://www.nasa.gov/audience/forstudents/k-4/stories/first-person-on-moon.html",
+      "title": "nasa.gov"
+     },
+     {
+      "url": "https://airandspace.si.edu/stories/editorial/remembering-neil-armstrong",
+      "title": "si.edu"
+     },
+     {
+      "url": "https://airandspace.si.edu/explore/stories/apollo-11-moon-landing",
+      "title": "si.edu"
+     },
+     {
+      "url": "https://www.history.com/this-day-in-history/july-20/armstrong-walks-on-moon",
+      "title": "history.com"
+     },
+     {
+      "url": "https://www.nasa.gov/people/neil-a-armstrong/",
+      "title": "nasa.gov"
+     }
+    ],
+    "evidence": "The statement that Neil Armstrong was the first person to walk on the Moon is supported by multiple reliable sources. Historical records and NASA documentation confirm that Neil Armstrong, as the commander of the Apollo 11 mission, became the first human to set foot on the lunar surface on July 20, 1969, followed shortly by Buzz Aldrin.",
+    "searchError": null
+   },
+   {
+    "id": 3,
+    "statement": "Buzz Aldrin followed Neil Armstrong to walk on the Moon.",
+    "quote": "followed by Buzz Aldrin.",
+    "mark": "verified",
+    "judges": [
+     {
+      "judge": "Amazon Nova",
+      "verdict": "verified",
+      "reason": "The statement is confirmed by reliable sources stating that Neil Armstrong was the first to step onto the Moon and Buzz Aldrin followed him as the second person to walk on the Moon during the Apollo 11 mission.",
+      "source": "https://en.wikipedia.org/wiki/Buzz_Aldrin, https://en.wikipedia.org/wiki/Apollo_11, https://science.nasa.gov/resource/saturn-apollo-program-2/",
+      "changed": false,
+      "firstVerdict": "verified"
+     },
+     {
+      "judge": "Mistral Large",
+      "verdict": "verified",
+      "reason": "The statement is confirmed by multiple reliable sources as true.",
+      "source": "https://en.wikipedia.org/wiki/Apollo_11",
+      "changed": false,
+      "firstVerdict": "verified"
+     },
+     {
+      "judge": "OpenAI gpt-oss",
+      "verdict": "verified",
+      "reason": "Buzz Aldrin was the second person to walk on the Moon, following Neil Armstrong during Apollo 11",
+      "source": "https://en.wikipedia.org/wiki/Buzz_Aldrin",
+      "changed": false,
+      "firstVerdict": "verified"
+     }
+    ],
+    "sources": [
+     {
+      "url": "https://en.wikipedia.org/wiki/Buzz_Aldrin",
+      "title": "wikipedia.org"
+     },
+     {
+      "url": "https://en.wikipedia.org/wiki/Apollo_11",
+      "title": "wikipedia.org"
+     },
+     {
+      "url": "https://science.nasa.gov/resource/saturn-apollo-program-2/",
+      "title": "nasa.gov"
+     }
+    ],
+    "evidence": "The statement is supported by reliable sources. Buzz Aldrin indeed followed Neil Armstrong to walk on the Moon during the Apollo 11 mission. Armstrong was the first to step onto the lunar surface, and Aldrin followed shortly after, becoming the second person to walk on the Moon.",
+    "searchError": null
+   },
+   {
+    "id": 4,
+    "statement": "The Apollo 11 mission carried a crew of four astronauts.",
+    "quote": "The mission carried a crew of four astronauts.",
+    "mark": "wrong",
+    "judges": [
+     {
+      "judge": "Amazon Nova",
+      "verdict": "wrong",
+      "reason": "Apollo 11 consisted of three astronauts, not four.",
+      "source": "https://en.wikipedia.org/wiki/Apollo_11",
+      "changed": false,
+      "firstVerdict": "wrong"
+     },
+     {
+      "judge": "Mistral Large",
+      "verdict": "wrong",
+      "reason": "The Apollo 11 mission carried a crew of three astronauts, not four.",
+      "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_11a_Summary.htm",
+      "changed": false,
+      "firstVerdict": "wrong"
+     },
+     {
+      "judge": "OpenAI gpt-oss",
+      "verdict": "wrong",
+      "reason": "All judges agree Apollo 11 had three astronauts, not four",
+      "source": "https://en.wikipedia.org/wiki/Apollo_11",
+      "changed": false,
+      "firstVerdict": "wrong"
+     }
+    ],
+    "sources": [
+     {
+      "url": "https://en.wikipedia.org/wiki/Apollo_11",
+      "title": "wikipedia.org"
+     },
+     {
+      "url": "https://www.wikiwand.com/en/articles/Apollo_Eleven",
+      "title": "wikiwand.com"
+     },
+     {
+      "url": "https://www.wikiwand.com/en/First_moonwalk",
+      "title": "wikiwand.com"
+     },
+     {
+      "url": "https://www.wikiwand.com/en/1969_Moon_landing",
+      "title": "wikiwand.com"
+     },
+     {
+      "url": "https://web.archive.org/web/20251217041412/https:/en.wikipedia.org/wiki/Apollo_11",
+      "title": "archive.org"
+     },
+     {
+      "url": "https://www.wikiwand.com/en/The_Moon_Landing",
+      "title": "wikiwand.com"
+     },
+     {
+      "url": "https://www.wikiwand.com/en/articles/First_moon_landing",
+      "title": "wikiwand.com"
+     },
+     {
+      "url": "https://www.newworldencyclopedia.org/entry/Apollo_11",
+      "title": "newworldencyclopedia.org"
+     },
+     {
+      "url": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_11a_Summary.htm",
+      "title": "nasa.gov"
+     },
+     {
+      "url": "https://www.wikiwand.com/simple/Apollo_11",
+      "title": "wikiwand.com"
+     }
+    ],
+    "evidence": "The statement that the Apollo 11 mission carried a crew of four astronauts is **incorrect**.\n\nApollo 11, which famously landed the first humans on the Moon in 1969, consisted of **three astronauts**: Commander Neil Armstrong, Command Module Pilot Michael Collins, and Lunar Module Pilot Edwin \"Buzz\" Aldrin. \n\nArmstrong and Aldrin landed on the lunar surface, while Collins remained in lunar orbit aboard the Command Module. No fourth astronaut was part of the Apollo 11 crew.",
+    "searchError": null
+   },
+   {
+    "id": 5,
+    "statement": "Michael Collins stayed in orbit around the Moon during the Apollo 11 mission.",
+    "quote": "Michael Collins stayed in orbit around the Moon.",
+    "mark": "verified",
+    "judges": [
+     {
+      "judge": "Amazon Nova",
+      "verdict": "verified",
+      "reason": "Multiple authoritative sources confirm that Michael Collins remained in lunar orbit aboard the Command Module while Neil Armstrong and Buzz Aldrin landed on the Moon during Apollo 11.",
+      "source": "https://en.wikipedia.org/wiki/Apollo_11",
+      "changed": false,
+      "firstVerdict": "verified"
+     },
+     {
+      "judge": "Mistral Large",
+      "verdict": "verified",
+      "reason": "All reliable sources and the other judges confirm that Michael Collins stayed in lunar orbit during Apollo 11 while Armstrong and Aldrin landed on the Moon.",
+      "source": "https://www.nasa.gov/mission_pages/apollo/missions/apollo11.html",
+      "changed": false,
+      "firstVerdict": "verified"
+     },
+     {
+      "judge": "OpenAI gpt-oss",
+      "verdict": "verified",
+      "reason": "All reliable sources confirm Collins stayed in lunar orbit while Armstrong and Aldrin landed",
+      "source": "https://www.nasa.gov/mission_pages/apollo/missions/apollo11.html",
+      "changed": false,
+      "firstVerdict": "verified"
+     }
+    ],
+    "sources": [
+     {
+      "url": "https://en.wikipedia.org/wiki/Apollo_11",
+      "title": "wikipedia.org"
+     },
+     {
+      "url": "https://www.nasa.gov/centers-and-facilities/kennedy/50-years-ago-apollo-astronauts-land-take-first-steps-on-moon/",
+      "title": "nasa.gov"
+     },
+     {
+      "url": "https://en.wikipedia.org/wiki/Apollo_program",
+      "title": "wikipedia.org"
+     },
+     {
+      "url": "http://www.nasa.gov/mission_pages/apollo/missions/apollo11.html",
+      "title": "nasa.gov"
+     },
+     {
+      "url": "https://www.nasa.gov/history/july-20-1969-one-giant-leap-for-mankind/",
+      "title": "nasa.gov"
+     },
+     {
+      "url": "https://en.wikipedia.org/wiki/Michael_Collins_(astronaut)",
+      "title": "wikipedia.org"
+     },
+     {
+      "url": "https://www.britannica.com/biography/Michael-Collins-American-astronaut",
+      "title": "britannica.com"
+     },
+     {
+      "url": "https://www.history.com/articles/astronaut-michael-collins",
+      "title": "history.com"
+     },
+     {
+      "url": "https://nmspacemuseum.org/inductee/michael-collins/",
+      "title": "nmspacemuseum.org"
+     },
+     {
+      "url": "https://airandspace.si.edu/amp-stories/michael-collins/index.html",
+      "title": "si.edu"
+     }
+    ],
+    "evidence": "The statement that Michael Collins stayed in orbit around the Moon during the Apollo 11 mission is supported by multiple reliable sources.\n\n- Apollo 11 was the first crewed mission to land humans on the Moon, with Neil Armstrong and Buzz Aldrin landing while Michael Collins remained in lunar orbit.\n- Michael Collins, as Command Module Pilot, orbited the Moon thirty times in the command module Columbia while his crewmates made the first crewed landing.\n\nAll sources confirm Collins's role orbiting the Moon while Armstrong and Aldrin landed.",
+    "searchError": null
+   },
+   {
+    "id": 6,
+    "statement": "The Apollo 11 spacecraft was launched by a Saturn V rocket.",
+    "quote": "The spacecraft was launched by a Saturn V rocket",
+    "mark": "verified",
+    "judges": [
+     {
+      "judge": "Amazon Nova",
+      "verdict": "verified",
+      "reason": "Multiple reliable sources confirm that Apollo 11 was launched by a Saturn V rocket on July 16, 1969.",
+      "source": "https://en.wikipedia.org/wiki/Apollo_11",
+      "changed": false,
+      "firstVerdict": "verified"
+     },
+     {
+      "judge": "Mistral Large",
+      "verdict": "verified",
+      "reason": "The Apollo 11 spacecraft was indeed launched by a Saturn V rocket, as confirmed by multiple reliable sources.",
+      "source": "https://en.wikipedia.org/wiki/Apollo_11",
+      "changed": false,
+      "firstVerdict": "verified"
+     },
+     {
+      "judge": "OpenAI gpt-oss",
+      "verdict": "verified",
+      "reason": "All reliable sources confirm Apollo\u202f11 was launched on a Saturn\u202fV rocket on 16\u202fJuly\u202f1969",
+      "source": "https://en.wikipedia.org/wiki/Apollo_11",
+      "changed": false,
+      "firstVerdict": "verified"
+     }
+    ],
+    "sources": [
+     {
+      "url": "https://en.wikipedia.org/wiki/Apollo_11",
+      "title": "wikipedia.org"
+     },
+     {
+      "url": "https://kids.britannica.com/students/article/Apollo-11/631767",
+      "title": "britannica.com"
+     },
+     {
+      "url": "https://en.wikipedia.org/wiki/Saturn_V",
+      "title": "wikipedia.org"
+     }
+    ],
+    "evidence": "The statement is correct. The Apollo 11 spacecraft was launched by a Saturn V rocket on July 16, 1969, from Kennedy Space Center in Florida. The Saturn V was the most powerful launch vehicle ever built at the time and was essential for sending astronauts to the Moon.",
+    "searchError": null
+   },
+   {
+    "id": 7,
+    "statement": "The Apollo 11 spacecraft was launched from Kennedy Space Center.",
+    "quote": "from Kennedy Space Center.",
+    "mark": "verified",
+    "judges": [
+     {
+      "judge": "Amazon Nova",
+      "verdict": "verified",
+      "reason": "Multiple authoritative sources, including NASA and Wikipedia, confirm that Apollo 11 was launched from Kennedy Space Center's Launch Complex 39A on July 16, 1969.",
+      "source": "https://www.nasa.gov/centers-and-facilities/kennedy/50-years-ago-apollo-astronauts-land-take-first-steps-on-moon/",
+      "changed": false,
+      "firstVerdict": "verified"
+     },
+     {
+      "judge": "Mistral Large",
+      "verdict": "verified",
+      "reason": "Multiple reliable NASA sources confirm the Apollo 11 launch from Kennedy Space Center's Launch Complex 39A.",
+      "source": "https://www.nasa.gov/centers-and-facilities/kennedy/50-years-ago-apollo-astronauts-land-take-first-steps-on-moon/",
+      "changed": false,
+      "firstVerdict": "verified"
+     },
+     {
+      "judge": "OpenAI gpt-oss",
+      "verdict": "verified",
+      "reason": "All reliable sources confirm Apollo\u202f11 launched from Kennedy Space Center\u2019s Launch Complex\u202f39A on July\u202f16\u202f1969",
+      "source": "https://www.nasa.gov/centers-and-facilities/kennedy/50-years-ago-apollo-astronauts-land-take-first-steps-on-moon/",
+      "changed": false,
+      "firstVerdict": "verified"
+     }
+    ],
+    "sources": [
+     {
+      "url": "https://www.nasa.gov/centers-and-facilities/kennedy/50-years-ago-apollo-astronauts-land-take-first-steps-on-moon/",
+      "title": "nasa.gov"
+     },
+     {
+      "url": "https://www.nasa.gov/image-article/launch-of-apollo-11/",
+      "title": "nasa.gov"
+     },
+     {
+      "url": "https://www.nasa.gov/image-article/apollo-11-lifts-off-3/",
+      "title": "nasa.gov"
+     },
+     {
+      "url": "https://en.wikipedia.org/wiki/Apollo_11",
+      "title": "wikipedia.org"
+     }
+    ],
+    "evidence": "The statement that the Apollo 11 spacecraft was launched from Kennedy Space Center is supported by multiple reliable sources.\n\nMultiple sources confirm that Apollo 11 launched from Kennedy Space Center's Launch Complex 39A on July 16, 1969. The mission launched atop a Saturn V rocket, carrying astronauts Neil Armstrong, Michael Collins, and Buzz Aldrin. This historic launch marked the beginning of humanity's first journey to land humans on the Moon.",
+    "searchError": null
+   }
+  ],
+  "summary": {
+   "total": 7,
+   "verified": 6,
+   "wrong": 1,
+   "unsupported": 0,
+   "unsettled": 0,
+   "percent": 86,
+   "line": "6 of 7 statements verified, 86%; 1 wrong"
+  },
+  "ms": 8608
+ }
+}

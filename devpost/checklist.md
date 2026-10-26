@@ -19,7 +19,7 @@ Build mode: fast (chosen: deadline is Mon 26 Oct 2:00 PM PT; verification and co
   Learner check: Open the page, paste a paragraph from an AI answer you know contains a mistake, press Check, and say whether the verdicts look right to you.
   Commit: `Add live check engine and bare page`
 
-- [ ] **2. Watch the work happen, then read a proper verdict**
+- [x] **2. Watch the work happen, then read a proper verdict**
   Becomes usable: The step indicator updates live (finding statements, searching, judges ruling, reconciling), then the verdict line with counts and percentage, and one card per statement with mark, why, source links and the three judges' votes (with a note if one changed its mind).
   Why now: The receipts are the product and the Presentation criterion; they must be real before polish. It also settles the streaming approach early.
   PRD ref: `prd.md > Checking, with the work shown`, `prd.md > The verdict`

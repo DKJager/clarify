@@ -4,7 +4,7 @@ import { reconcileStatement, summarise, normaliseVerdict } from './reconcile.js'
 
 const STAGE_MS = 15000;
 const TOTAL_MS = 30000;
-const judgeName = (id) => id.split(/[.:/]/).filter((p) => !/^(us|global|eu|v\d.*)$/.test(p)).slice(0, 2).join(' ');
+const judgeName = (id) => (/nova/.test(id) ? 'Amazon Nova' : /mistral/.test(id) ? 'Mistral Large' : /gpt-oss/.test(id) ? 'OpenAI gpt-oss' : id.split(/[.:/]/)[1] || id);
 
 export async function runCheck(text, emit = () => {}) {
   const started = Date.now();

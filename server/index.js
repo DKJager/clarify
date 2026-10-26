@@ -13,11 +13,17 @@ const MAX_CHARS = 6000;
 app.post('/api/check', async (req, res) => {
   const text = String(req.body?.text || '').slice(0, MAX_CHARS).trim();
   if (!text) return res.status(400).json({ error: 'Nothing to check.' });
+  res.setHeader('Content-Type', 'application/x-ndjson');
+  res.setHeader('Cache-Control', 'no-store');
+  res.flushHeaders?.();
+  const send = (o) => res.write(JSON.stringify(o) + '\n');
   try {
-    res.json(await runCheck(text));
+    const result = await runCheck(text, send);
+    send({ stage: 'result', result });
   } catch (e) {
-    res.status(502).json({ error: e.message });
+    send({ stage: 'error', message: e.message });
   }
+  res.end();
 });
 
 const port = process.env.PORT || 3000;
