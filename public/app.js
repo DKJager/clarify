@@ -6,6 +6,9 @@ const ICON = { verified: '✓', wrong: '✗', unsettled: '~', unsupported: '?' }
 const LABEL = { verified: 'Verified', wrong: 'Wrong', unsettled: 'Unsettled', unsupported: 'Unsupported' };
 let current = '';
 let lastResult = null;
+const SESSION_MAX = 5;
+const used = () => { try { return Number(sessionStorage.getItem('clarifyChecks') || 0); } catch { return 0; } };
+const count = () => { try { sessionStorage.setItem('clarifyChecks', String(used() + 1)); } catch { /* storage unavailable: server limit still applies */ } };
 const TIMEOUT = Number(new URLSearchParams(location.search).get('timeout')) || 40000; // text being checked
 
 const text = $('text'), go = $('go');
@@ -103,12 +106,14 @@ function render(result) {
 async function run() {
   current = text.value.trim();
   if (!current) return;
+  if (used() >= SESSION_MAX) { message(`You have used your ${SESSION_MAX} free checks for this visit. You can still try the example.`, false, false); return; }
+  count();
   show('progress'); setStep('finding'); $('banner').textContent = '';
   const timer = setTimeout(() => ctrl.abort(), TIMEOUT);
   const ctrl = new AbortController();
   try {
     const r = await fetch('/api/check', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text: current }), signal: ctrl.signal });
-    if (!r.ok || !r.body) { const d = await r.json().catch(() => ({})); throw new Error(d.error || 'The check could not start.'); }
+    if (!r.ok || !r.body) { const d = await r.json().catch(() => ({})); const err = new Error(d.error || 'The check could not start.'); err.limit = !!d.code; throw err; }
     const reader = r.body.getReader(), dec = new TextDecoder(); let buf = '';
     for (;;) {
       const { done, value } = await reader.read(); if (done) break;
@@ -126,6 +131,7 @@ async function run() {
     throw new Error('The check ended early.');
   } catch (e) {
     clearTimeout(timer);
+    if (e.limit) { message(e.message + ' You can still try the example.', false, false); return; }
     message(e.name === 'AbortError' ? 'That took too long (over 30 seconds). Your text is kept.' : `Something went wrong: ${e.message}. Your text is kept.`, true, true);
   }
 }

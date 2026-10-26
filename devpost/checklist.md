@@ -59,7 +59,7 @@ Build mode: fast (chosen: deadline is Mon 26 Oct 2:00 PM PT; verification and co
   Learner check: Press Download and open the report; say whether you would hand it to someone.
   Commit: `Add report, saved example and edge states`
 
-- [ ] **6. Guards, public link, and README**
+- [x] **6. Guards, public link, and README**
   Becomes usable: Per-session and daily caps, per-IP rate limit and spend stop are active; the app is reachable at a public link; the README explains what it is, how it works and how to run it, with no secrets anywhere in the repository.
   Why now: Last, because it protects and publishes a finished app; the public link also decides the Design and Presentation story for judges.
   PRD ref: `prd.md > States and Boundaries` (limits), `prd.md > Product Decisions`

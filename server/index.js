@@ -2,6 +2,11 @@ import express from 'express';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { runCheck } from './pipeline.js';
+import { createGuards } from './guards.js';
+
+const guards = createGuards();
+// Behind the Cloudflare tunnel the real visitor address arrives in cf-connecting-ip.
+const clientIp = (req) => req.headers['cf-connecting-ip'] || req.ip || 'unknown';
 
 const app = express();
 const pub = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'public');
@@ -14,6 +19,8 @@ const MAX_CHARS = 6000;
 app.post('/api/check', async (req, res) => {
   const text = String(req.body?.text || '').slice(0, MAX_CHARS).trim();
   if (!text) return res.status(400).json({ error: 'Nothing to check.' });
+  const gate = guards.admit(clientIp(req));
+  if (!gate.ok) return res.status(gate.status).json({ error: gate.message, code: gate.code });
   res.setHeader('Content-Type', 'application/x-ndjson');
   res.setHeader('Cache-Control', 'no-store');
   res.flushHeaders?.();
