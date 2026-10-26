@@ -1,5 +1,6 @@
 import { converse, ground, parseJson, MODELS, withTimeout } from './bedrock.js';
 import { FINDER_SYSTEM, GROUND_SYSTEM, JUDGE_SYSTEM, REBUTTAL_SYSTEM } from './prompts.js';
+import { checkCalc } from './calc.js';
 import { reconcileStatement, summarise, normaliseVerdict } from './reconcile.js';
 
 const STAGE_MS = 15000;
@@ -11,13 +12,14 @@ export async function runCheck(text, emit = () => {}) {
   const left = () => Math.max(2000, Math.min(STAGE_MS, TOTAL_MS - (Date.now() - started)));
 
   emit({ stage: 'finding' });
-  const found = parseJson(await converse(MODELS.finder, FINDER_SYSTEM, text, { ms: left(), maxTokens: 900 }));
-  const statements = (found?.statements || []).slice(0, 8).map((s, i) => ({ id: i + 1, statement: String(s.statement || ''), quote: String(s.quote || '') })).filter((s) => s.statement);
+  const found = parseJson(await converse(MODELS.finder, FINDER_SYSTEM, text, { ms: left(), maxTokens: 1100 }));
+  const statements = (found?.statements || []).slice(0, 8).map((s, i) => ({ id: i + 1, statement: String(s.statement || ''), quote: String(s.quote || ''), calc: checkCalc(s.calc, String(s.statement || '')) })).filter((s) => s.statement);
   emit({ stage: 'found', count: statements.length, statements });
   if (!statements.length) return { statements: [], summary: summarise([]), ms: Date.now() - started };
 
   emit({ stage: 'searching', count: statements.length });
   const evidence = await Promise.all(statements.map(async (s) => {
+    if (s.calc) return { text: '', sources: [] };
     try { return await ground(GROUND_SYSTEM, s.statement, { ms: left() }); }
     catch (e) { return { text: '', sources: [], error: e.message }; }
   }));
@@ -25,7 +27,8 @@ export async function runCheck(text, emit = () => {}) {
 
   emit({ stage: 'judging' });
   const evText = (e) => (e.text ? `Evidence:\n${e.text}\nSources: ${e.sources.map((x) => x.url).join(', ') || 'none'}` : 'Evidence: no sources retrieved.');
-  const round1 = await Promise.all(statements.map((s, i) => Promise.all(MODELS.judges.map(async (id) => {
+  const calcRuling = (s) => [{ judge: 'Calculator (code)', verdict: s.calc.verdict, reason: s.calc.reason, changed: false }];
+  const round1 = await Promise.all(statements.map((s, i) => s.calc ? calcRuling(s) : Promise.all(MODELS.judges.map(async (id) => {
     try {
       const r = parseJson(await converse(id, JUDGE_SYSTEM, `Statement: ${s.statement}\nOriginal sentence from the answer: ${s.quote}\n\n${evText(evidence[i])}`, { ms: left(), maxTokens: 400 }));
       return { judge: judgeName(id), model: id, verdict: normaliseVerdict(r?.verdict), reason: r?.reason || 'No reason given.', source: r?.source || '' };
@@ -35,7 +38,7 @@ export async function runCheck(text, emit = () => {}) {
   }))));
   emit({ stage: 'rebuttal' });
 
-  const round2 = await Promise.all(statements.map((s, i) => Promise.all(round1[i].map(async (mine, j) => {
+  const round2 = await Promise.all(statements.map((s, i) => s.calc ? round1[i] : Promise.all(round1[i].map(async (mine, j) => {
     if (mine.failed) return { ...mine, changed: false };
     const others = round1[i].filter((_, k) => k !== j).map((o) => `${o.judge}: ${o.verdict} - ${o.reason}`).join('\n');
     try {
