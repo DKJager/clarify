@@ -27,7 +27,7 @@ export async function runCheck(text, emit = () => {}) {
   const evText = (e) => (e.text ? `Evidence:\n${e.text}\nSources: ${e.sources.map((x) => x.url).join(', ') || 'none'}` : 'Evidence: no sources retrieved.');
   const round1 = await Promise.all(statements.map((s, i) => Promise.all(MODELS.judges.map(async (id) => {
     try {
-      const r = parseJson(await converse(id, JUDGE_SYSTEM, `Statement: ${s.statement}\n\n${evText(evidence[i])}`, { ms: left(), maxTokens: 400 }));
+      const r = parseJson(await converse(id, JUDGE_SYSTEM, `Statement: ${s.statement}\nOriginal sentence from the answer: ${s.quote}\n\n${evText(evidence[i])}`, { ms: left(), maxTokens: 400 }));
       return { judge: judgeName(id), model: id, verdict: normaliseVerdict(r?.verdict), reason: r?.reason || 'No reason given.', source: r?.source || '' };
     } catch (e) {
       return { judge: judgeName(id), model: id, verdict: 'unsettled', reason: `Judge unavailable: ${e.message}`, failed: true, source: '' };
@@ -39,7 +39,7 @@ export async function runCheck(text, emit = () => {}) {
     if (mine.failed) return { ...mine, changed: false };
     const others = round1[i].filter((_, k) => k !== j).map((o) => `${o.judge}: ${o.verdict} - ${o.reason}`).join('\n');
     try {
-      const r = parseJson(await converse(mine.model, REBUTTAL_SYSTEM, `Statement: ${s.statement}\n\n${evText(evidence[i])}\n\nYour ruling: ${mine.verdict} - ${mine.reason}\nOther judges:\n${others}`, { ms: left(), maxTokens: 300 }));
+      const r = parseJson(await converse(mine.model, REBUTTAL_SYSTEM, `Statement: ${s.statement}\nOriginal sentence from the answer: ${s.quote}\n\n${evText(evidence[i])}\n\nYour ruling: ${mine.verdict} - ${mine.reason}\nOther judges:\n${others}`, { ms: left(), maxTokens: 300 }));
       const v = normaliseVerdict(r?.verdict || mine.verdict);
       return { ...mine, verdict: v, reason: r?.reason || mine.reason, changed: v !== mine.verdict, firstVerdict: mine.verdict };
     } catch { return { ...mine, changed: false }; }
