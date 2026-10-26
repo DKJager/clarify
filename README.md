@@ -1,4 +1,4 @@
-# Clarify
+# Clarify, by 3Dogs Nexus
 
 Drop in any AI answer and find out, statement by statement, whether it is real.
 

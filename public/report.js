@@ -4,7 +4,7 @@ const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '
 const okUrl = (u) => { try { return /^https?:$/.test(new URL(u).protocol) ? u : null; } catch { return null; } };
 
 export function buildReportText(result, when = new Date()) {
-  const L = [`Clarify report - ${when.toLocaleString()}`, result.summary.line, ''];
+  const L = [`Clarify by 3Dogs Nexus - report - ${when.toLocaleString()}`, result.summary.line, ''];
   result.statements.forEach((s, i) => {
     L.push(`${i + 1}. [${LABEL[s.mark]}] ${s.statement}`);
     for (const j of s.judges) L.push(`   ${j.judge}: ${j.verdict}${j.changed ? ` (was ${j.firstVerdict})` : ''} - ${j.reason}`);
@@ -28,7 +28,7 @@ export function buildReportHtml(result, when = new Date()) {
 section{border-left:5px solid #6e7781;padding:.2rem 0 .2rem .8rem;margin:.9rem 0;break-inside:avoid}section.verified{border-color:#1a7f37}section.wrong{border-color:#cf222e}section.unsettled{border-color:#bf8700}
 h3{font-size:1rem;margin:.2rem 0}.b{font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;background:#eaeef2;border-radius:99px;padding:.1rem .5rem}ul{margin:.2rem 0;padding-left:1.1rem}.src{font-size:.8rem;word-break:break-all}
 .meta,.foot{color:#6e7781;font-size:.8rem}</style></head><body>
-<h1>Clarify</h1><div class="meta">Documented check &middot; ${esc(when.toLocaleString())}</div>
+<h1>Clarify <small>by 3Dogs Nexus</small></h1><div class="meta">Documented check &middot; ${esc(when.toLocaleString())}</div>
 <h2>${esc(result.summary.line)}</h2>${rows}
 <p class="foot">Each statement was searched on the live web (Amazon Nova grounding) and ruled on by three independent AI models with one rebuttal round. AI can still be wrong; use the sources.</p>
 </body></html>`;
