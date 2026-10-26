@@ -49,7 +49,7 @@ Build mode: fast (chosen: deadline is Mon 26 Oct 2:00 PM PT; verification and co
   Learner check: Drop in a PDF of an AI answer and say it out loud once; confirm both land in the box.
   Commit: `Add file drop, PDF reading and voice entry`
 
-- [ ] **5. Download the report, try the example, and nothing breaks**
+- [x] **5. Download the report, try the example, and nothing breaks**
   Becomes usable: Download a one-page report and Copy as text; "Try an example" shows a saved result with no network; the empty, nothing-checkable, timeout and error states all behave as described.
   Why now: The report is the tangible artefact for the video, and the saved example is the demo safety net the committee asked for.
   PRD ref: `prd.md > The documented report`, `prd.md > Saved example`, `prd.md > States and Boundaries`

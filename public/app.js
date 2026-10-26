@@ -1,9 +1,12 @@
 import { locateAll } from './match.js';
+import { buildReportHtml, buildReportText } from './report.js';
 const $ = (id) => document.getElementById(id);
 const ORDER = ['finding', 'searching', 'judging', 'rebuttal', 'reconciling'];
 const ICON = { verified: '✓', wrong: '✗', unsettled: '~', unsupported: '?' };
 const LABEL = { verified: 'Verified', wrong: 'Wrong', unsettled: 'Unsettled', unsupported: 'Unsupported' };
-let current = ''; // text being checked
+let current = '';
+let lastResult = null;
+const TIMEOUT = Number(new URLSearchParams(location.search).get('timeout')) || 40000; // text being checked
 
 const text = $('text'), go = $('go');
 text.addEventListener('input', () => { go.disabled = !text.value.trim(); });
@@ -87,7 +90,10 @@ function markedText(text, statements) {
 }
 
 function render(result) {
-  if (!result.statements.length) { message('No factual statements to check here.', false); return; }
+  lastResult = result;
+  const empty = !result.statements.length;
+  for (const id of ['marked', 'download', 'copy']) $(id).hidden = empty;
+  if (empty) { $('banner').textContent = 'No factual statements to check here.'; $('cards').replaceChildren(); show('result'); return; }
   $('banner').textContent = result.summary.line;
   $('marked').replaceChildren(markedText(current.slice(0, 6000), result.statements));
   $('cards').replaceChildren(...result.statements.map(card));
@@ -98,7 +104,7 @@ async function run() {
   current = text.value.trim();
   if (!current) return;
   show('progress'); setStep('finding'); $('banner').textContent = '';
-  const timer = setTimeout(() => ctrl.abort(), 40000);
+  const timer = setTimeout(() => ctrl.abort(), TIMEOUT);
   const ctrl = new AbortController();
   try {
     const r = await fetch('/api/check', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text: current }), signal: ctrl.signal });
@@ -182,4 +188,16 @@ $('example').onclick = async () => {
     const ex = await (await fetch('example.json')).json();
     setText(ex.text); current = ex.text; render(ex.result);
   } catch (e) { message(`Could not load the example: ${e.message}`, true, false); }
+};
+
+$('download').onclick = () => {
+  if (!lastResult) return;
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([buildReportHtml(lastResult)], { type: 'text/html' }));
+  a.download = 'clarify-report.html'; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+};
+$('copy').onclick = async () => {
+  if (!lastResult) return;
+  try { await navigator.clipboard.writeText(buildReportText(lastResult)); } catch { const t = document.createElement('textarea'); t.value = buildReportText(lastResult); document.body.append(t); t.select(); document.execCommand('copy'); t.remove(); }
+  $('copied').hidden = false; setTimeout(() => { $('copied').hidden = true; }, 1500);
 };
