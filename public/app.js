@@ -62,7 +62,7 @@ function card(s) {
   const links = s.sources.map((x) => [safeUrl(x.url), x.title]).filter(([u]) => u).filter(([u, t]) => { const k = (t && t !== u ? t : new URL(u).hostname).replace(/^www\./, ''); if (seen.has(k)) return false; seen.add(k); return true; }).slice(0, 4);
   if (links.length) {
     for (const [u, t] of links) { const a = document.createElement('a'); a.href = u; a.target = '_blank'; a.rel = 'noopener'; a.textContent = (t && t !== u ? t : new URL(u).hostname).replace(/^www\./, '').slice(0, 40); src.append(a); }
-  } else { src.textContent = 'No sources retrieved.'; src.className += ' muted'; }
+  } else { src.textContent = s.judges.some((j) => /Calculator/.test(j.judge)) ? 'Checked by recalculation, no web source needed.' : 'No sources retrieved.'; src.className += ' muted'; }
   c.append(src);
   return c;
 }

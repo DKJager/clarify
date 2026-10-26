@@ -20,7 +20,7 @@ export function buildReportHtml(result, when = new Date()) {
   const rows = result.statements.map((s, i) => {
     const votes = s.judges.map((j) => `<li><b>${esc(j.judge)}</b>: ${esc(j.verdict)}${j.changed ? ` (was ${esc(j.firstVerdict)})` : ''} &ndash; ${esc(j.reason)}</li>`).join('');
     const links = s.sources.map((x) => [okUrl(x.url), x.title]).filter(([u]) => u).slice(0, 4)
-      .map(([u]) => `<a href="${esc(u)}">${esc(u)}</a>`).join('<br>') || '<i>No sources retrieved</i>';
+      .map(([u]) => `<a href="${esc(u)}">${esc(u)}</a>`).join('<br>') || (s.judges.some((j) => /Calculator/.test(j.judge)) ? '<i>Checked by recalculation</i>' : '<i>No sources retrieved</i>');
     return `<section class="${esc(s.mark)}"><h3>${i + 1}. <span class="b">${esc(LABEL[s.mark])}</span> ${esc(s.statement)}</h3><ul>${votes}</ul><p class="src">${links}</p></section>`;
   }).join('');
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Clarify report</title>

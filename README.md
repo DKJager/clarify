@@ -8,11 +8,12 @@ Built for the Devpost *Build With AI: Basics* hackathon.
 
 ## How a check works
 
-1. **Find statements.** One model lists the checkable factual statements and rewrites each so it stands on its own ("the mission" becomes "the Apollo 11 mission").
+1. **Find statements.** One model lists the checkable factual statements and rewrites each so it stands on its own ("the company" becomes the company's name). A calculation is kept whole..
 2. **Search sources.** Amazon Nova's built-in web grounding searches each statement, in parallel.
-3. **Judges rule.** Three models (Amazon Nova 2 Lite, Mistral Large 3, OpenAI gpt-oss-120b) each read the statement and the evidence and rule independently.
-4. **Rebuttal.** Each judge sees the other two rulings and keeps or changes its verdict. Changes are shown.
-5. **Reconcile.** Majority wins; no majority is "unsettled".
+3. **Sums are recomputed in code.** A calculation with a stated result is not left to the models: a small safe calculator recomputes it and marks it wrong if the result differs (for example an ARR total off by $280).
+4. **Judges rule.** Three models (Amazon Nova 2 Lite, Mistral Large 3, OpenAI gpt-oss-120b) each read the statement and the evidence and rule independently.
+5. **Rebuttal.** Each judge sees the other two rulings and keeps or changes its verdict. Changes are shown.
+6. **Reconcile.** Majority wins; no majority is "unsettled".
 
 A typical 5 to 8 statement paragraph takes 10 to 15 seconds. Each stage has a 15 second limit and the whole check 30 seconds.
 
@@ -46,6 +47,6 @@ devpost/  the plan: scope.md, prd.md, spec.md, checklist.md
 
 ## Honest limits
 
-AI judges can still be wrong. Clarify shows its sources and votes so you can check the check. Scanned or image-only PDFs are not read. Speech entry uses the browser's built-in recognition (Chrome, Safari).
+AI judges can still be wrong. Clarify shows its sources and votes so you can check the check. Results can vary slightly from run to run. A claim that rests on your own numbers or a very specific context has no web page to check against, so it comes back "unsupported" rather than guessed. Clarify checks facts and sums; it does not judge whether advice is good. The prompts were tuned on a small set of real AI answers, so treat the accuracy as promising, not proven. Scanned or image-only PDFs are not read. Speech entry uses the browser's built-in recognition (Chrome, Safari).
 
 MIT licensed.
