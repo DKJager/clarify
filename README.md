@@ -4,7 +4,7 @@ Drop in any AI answer and find out, statement by statement, whether it is real.
 
 Paste text, drop a `.txt` / `.md` / `.pdf`, or speak it. Clarify pulls out the factual statements, searches the live web for each one, has three AI models from different makers rule on it independently, lets them see each other's rulings once, and settles on a verdict. Every statement comes back marked **verified**, **wrong**, **unsettled** or **unsupported**, with sources, each judge's vote and a one-line reason. You can download or copy the documented result.
 
-Built for the Devpost *Build With AI: Basics* hackathon.
+Built for the Devpost *Build With AI: Basics* hackathon. **Demo video:** https://youtu.be/VmEKa2-L_mU
 
 ## How a check works
 
