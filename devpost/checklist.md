@@ -39,7 +39,7 @@ Build mode: fast (chosen: deadline is Mon 26 Oct 2:00 PM PT; verification and co
   Learner check: Hover the red mark and confirm you can see which judge said what and why.
   Commit: `Mark statements in the original text with hover detail`
 
-- [ ] **4. Drop a file or speak your answer**
+- [x] **4. Drop a file or speak your answer**
   Becomes usable: Drag a .txt, .md or .pdf onto the zone and its text appears; tap the microphone and speak it. Over-length text is trimmed with a notice.
   Why now: Completes "paste, drop or speak" from the product promise once the core is solid.
   PRD ref: `prd.md > Input`

@@ -15,8 +15,11 @@
 
   <section id="input">
     <textarea id="text" placeholder="Paste an AI answer, drop a file, or tap the mic" aria-label="Text to check"></textarea>
+    <p id="notice" class="muted" hidden></p>
     <div class="row">
       <button id="go" disabled>Check</button>
+      <button id="mic" class="secondary" hidden aria-label="Speak your text" title="Speak your text">&#127908; Speak</button>
+      <button id="example" class="secondary">Try an example</button>
       <span id="count" class="muted"></span>
     </div>
   </section>

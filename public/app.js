@@ -124,5 +124,62 @@ async function run() {
   }
 }
 
+const MAX = 6000;
+function setText(t, from) {
+  let note = '';
+  if (t.length > MAX) { t = t.slice(0, MAX); note = `Your text was long, so only the first ${MAX.toLocaleString()} characters will be checked.`; }
+  text.value = t; go.disabled = !t.trim();
+  const n = $('notice'); n.textContent = note; n.hidden = !note;
+  if (!t.trim() && from) { n.textContent = `No readable text found in ${from}. If it is a scan or image, paste the text instead.`; n.hidden = false; }
+}
+
+async function pdfText(buf) {
+  const pdfjs = await import('/vendor/pdfjs/pdf.min.mjs');
+  pdfjs.GlobalWorkerOptions.workerSrc = '/vendor/pdfjs/pdf.worker.min.mjs';
+  const doc = await pdfjs.getDocument({ data: buf }).promise;
+  const pages = [];
+  for (let i = 1; i <= doc.numPages && pages.join('').length < MAX * 2; i++) {
+    const c = await (await doc.getPage(i)).getTextContent();
+    pages.push(c.items.map((x) => x.str + (x.hasEOL ? '\n' : '')).join(' ').replace(/ +/g, ' ').trim());
+  }
+  return pages.join('\n\n');
+}
+
+async function loadFile(f) {
+  try {
+    if (/\.pdf$/i.test(f.name) || f.type === 'application/pdf') setText(await pdfText(await f.arrayBuffer()), f.name);
+    else if (/\.(txt|md|markdown)$/i.test(f.name) || f.type.startsWith('text/')) setText(await f.text(), f.name);
+    else { const n = $('notice'); n.textContent = 'That file type is not supported yet. Use .txt, .md or .pdf, or paste the text.'; n.hidden = false; }
+  } catch (e) { const n = $('notice'); n.textContent = `Could not read that file (${e.message}). Paste the text instead.`; n.hidden = false; }
+}
+
+for (const ev of ['dragenter', 'dragover']) text.addEventListener(ev, (e) => { e.preventDefault(); text.classList.add('over'); });
+for (const ev of ['dragleave', 'drop']) text.addEventListener(ev, () => text.classList.remove('over'));
+text.addEventListener('drop', (e) => { const f = e.dataTransfer?.files?.[0]; if (f) { e.preventDefault(); loadFile(f); } });
+text.addEventListener('paste', () => setTimeout(() => { if (text.value.length > MAX) setText(text.value); }, 0));
+
+// Voice entry (browser's built-in speech recognition; hidden where unsupported)
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+if (SR) {
+  const mic = $('mic'); mic.hidden = false;
+  let rec = null, base = '';
+  mic.onclick = () => {
+    if (rec) { rec.stop(); return; }
+    rec = new SR(); rec.continuous = true; rec.interimResults = true; rec.lang = navigator.language || 'en-US';
+    base = text.value ? text.value.trimEnd() + ' ' : '';
+    rec.onresult = (e) => { let t = ''; for (const r of e.results) t += r[0].transcript; setText(base + t); };
+    rec.onend = () => { rec = null; mic.textContent = '\u{1F3A4} Speak'; };
+    rec.onerror = () => { const n = $('notice'); n.textContent = 'The microphone could not be used. Check the browser permission, or paste the text.'; n.hidden = false; };
+    rec.start(); mic.textContent = '\u25A0 Stop';
+  };
+}
+
 go.onclick = run;
 $('again').onclick = () => { text.value = ''; go.disabled = true; show('input'); };
+
+$('example').onclick = async () => {
+  try {
+    const ex = await (await fetch('example.json')).json();
+    setText(ex.text); current = ex.text; render(ex.result);
+  } catch (e) { message(`Could not load the example: ${e.message}`, true, false); }
+};

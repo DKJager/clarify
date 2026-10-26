@@ -7,6 +7,7 @@ const app = express();
 const pub = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'public');
 app.use(express.json({ limit: '100kb' }));
 app.use(express.static(pub));
+app.use('/vendor/pdfjs', express.static(path.join(pub, '..', 'node_modules', 'pdfjs-dist', 'build')));
 
 const MAX_CHARS = 6000;
 

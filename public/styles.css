@@ -6,6 +6,7 @@ h1{margin:0;font-size:2rem;letter-spacing:-.02em}
 .tag{margin:.25rem 0 1.5rem;color:var(--grey)}
 .muted{color:var(--grey);font-size:.875rem}
 textarea{width:100%;min-height:11rem;padding:1rem;border:2px dashed var(--line);border-radius:10px;font:inherit;resize:vertical;background:var(--soft)}
+textarea.over{border-color:#0969da;background:#ddf4ff}
 textarea:focus{outline:2px solid #0969da;border-style:solid;background:#fff}
 .row{display:flex;gap:.75rem;align-items:center;margin-top:.75rem}
 button{font:inherit;font-weight:600;padding:.6rem 1.3rem;border-radius:8px;border:1px solid #1f2328;background:#1f2328;color:#fff;cursor:pointer}
