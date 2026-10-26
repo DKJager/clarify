@@ -29,7 +29,7 @@ Build mode: fast (chosen: deadline is Mon 26 Oct 2:00 PM PT; verification and co
   Learner check: Run your own example and say whether the screen makes it clear why each statement got its mark.
   Commit: `Show live steps, verdict line and statement cards`
 
-- [ ] **3. See each statement marked in your own text**
+- [x] **3. See each statement marked in your own text**
   Becomes usable: The original text appears with each statement tinted by its mark (with a small icon), and hovering shows each judge's vote and reason. A statement that cannot be located is left unmarked and still has its card.
   Why now: This is the "oh, that's cool" moment for the video, and the matcher is the fragile part, so it gets its own verified step.
   PRD ref: `prd.md > The verdict` (marked text, hover detail)

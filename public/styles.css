@@ -32,5 +32,13 @@ button.secondary{background:#fff;color:var(--fg);border-color:var(--line)}
 .vote{font-size:.8125rem;border:1px solid var(--line);border-radius:6px;padding:.15rem .5rem;background:var(--soft)}
 .sources{font-size:.875rem}
 .sources a{margin-right:.8rem;white-space:nowrap;display:inline-block}
+.marked{white-space:pre-wrap;border:1px solid var(--line);border-radius:10px;padding:1rem;background:var(--soft);margin:0 0 1rem;line-height:1.9}
+.mk{position:relative;border-radius:4px;padding:.1rem .2rem;cursor:help}
+.mk.verified{background:#dafbe1}.mk.wrong{background:#ffebe9}.mk.unsettled{background:#fff8c5}.mk.unsupported{background:#eaeef2}
+.mk .ic{font-weight:700;margin-right:.25rem;font-size:.8em}
+.mk.verified .ic{color:var(--green)}.mk.wrong .ic{color:var(--red)}.mk.unsettled .ic{color:var(--amber)}.mk.unsupported .ic{color:var(--grey)}
+.tip{display:none;position:absolute;left:0;top:100%;z-index:5;width:min(22rem,80vw);padding:.6rem .8rem;margin-top:.25rem;background:#1f2328;color:#fff;border-radius:8px;font-size:.8125rem;line-height:1.4;white-space:normal;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.tip .tl{display:block;margin-top:.3rem}
+.mk:hover .tip,.mk:focus .tip{display:block}
 footer{margin-top:2.5rem}
 @media(max-width:480px){main{padding-top:1.2rem}}

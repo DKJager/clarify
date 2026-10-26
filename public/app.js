@@ -1,3 +1,4 @@
+import { locateAll } from './match.js';
 const $ = (id) => document.getElementById(id);
 const ORDER = ['finding', 'searching', 'judging', 'rebuttal', 'reconciling'];
 const ICON = { verified: '✓', wrong: '✗', unsettled: '~', unsupported: '?' };
@@ -60,9 +61,35 @@ function card(s) {
   return c;
 }
 
+function markedText(text, statements) {
+  const box = document.createElement('div');
+  let pos = 0;
+  for (const m of locateAll(text, statements)) {
+    const s = statements[m.index];
+    if (m.start > pos) box.append(text.slice(pos, m.start));
+    const mk = document.createElement('span');
+    mk.className = 'mk ' + s.mark; mk.tabIndex = 0;
+    const ic = document.createElement('span'); ic.className = 'ic'; ic.textContent = ICON[s.mark]; ic.setAttribute('aria-label', LABEL[s.mark]);
+    mk.append(ic, text.slice(m.start, m.end));
+    const tip = document.createElement('span'); tip.className = 'tip'; tip.setAttribute('role', 'tooltip');
+    const h = document.createElement('strong'); h.textContent = LABEL[s.mark]; tip.append(h);
+    for (const j of s.judges) {
+      const l = document.createElement('span'); l.className = 'tl';
+      l.textContent = `${j.judge}: ${j.verdict}${j.changed ? ` (was ${j.firstVerdict})` : ''}. ${j.reason}`;
+      tip.append(l);
+    }
+    mk.append(tip);
+    box.append(mk);
+    pos = m.end;
+  }
+  if (pos < text.length) box.append(text.slice(pos));
+  return box;
+}
+
 function render(result) {
   if (!result.statements.length) { message('No factual statements to check here.', false); return; }
   $('banner').textContent = result.summary.line;
+  $('marked').replaceChildren(markedText(current.slice(0, 6000), result.statements));
   $('cards').replaceChildren(...result.statements.map(card));
   show('result');
 }
