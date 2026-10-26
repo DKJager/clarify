@@ -1,15 +1,15 @@
 ---
 doc: checklist
-status: draft
+status: approved
 ---
 
 # Build Checklist
 
-Build mode: fast (recommended: deadline is Mon 26 Oct 2:00 PM PT; verification and commits are never skipped, explanation is shorter)
+Build mode: fast (chosen: deadline is Mon 26 Oct 2:00 PM PT; verification and commits are never skipped, explanation is shorter)
 
 ## Slices
 
-- [ ] **1. Paste text, press Check, and see real verdicts from the live engine**
+- [x] **1. Paste text, press Check, and see real verdicts from the live engine**
   Becomes usable: A running app where pasted text is checked end to end: statements found, searched on the web, ruled on by three models, reconciled, and listed on the page as plain rows (statement, verdict, sources). No styling yet beyond readable defaults.
   Why now: This is the kernel and the biggest risk. It proves the AI side (model names enabled, Nova search returns links, a check finishes in 30 seconds) before any design time is spent. If it fails, the fallbacks in the spec are tried while there is still time.
   PRD ref: `prd.md > Checking, with the work shown`, `prd.md > The verdict`

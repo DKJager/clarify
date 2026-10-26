@@ -1,0 +1,16 @@
+{
+  "name": "clarify",
+  "version": "0.1.0",
+  "description": "Drop in any AI answer and find out, statement by statement, whether it is real.",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "node --test"
+  },
+  "engines": { "node": ">=22" },
+  "dependencies": {
+    "@aws-sdk/client-bedrock-runtime": "^3.700.0",
+    "express": "^4.21.0"
+  }
+}

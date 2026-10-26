@@ -1,0 +1,25 @@
+import express from 'express';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
+import { runCheck } from './pipeline.js';
+
+const app = express();
+const pub = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'public');
+app.use(express.json({ limit: '100kb' }));
+app.use(express.static(pub));
+
+const MAX_CHARS = 6000;
+
+app.post('/api/check', async (req, res) => {
+  const text = String(req.body?.text || '').slice(0, MAX_CHARS).trim();
+  if (!text) return res.status(400).json({ error: 'Nothing to check.' });
+  try {
+    res.json(await runCheck(text));
+  } catch (e) {
+    res.status(502).json({ error: e.message });
+  }
+});
+
+const port = process.env.PORT || 3000;
+if (process.argv[1] === fileURLToPath(import.meta.url)) app.listen(port, () => console.log(`Clarify on http://localhost:${port}`));
+export default app;
