@@ -50,3 +50,5 @@ devpost/  the plan: scope.md, prd.md, spec.md, checklist.md
 AI judges can still be wrong. Clarify shows its sources and votes so you can check the check. Results can vary slightly from run to run. A claim that rests on your own numbers or a very specific context has no web page to check against, so it comes back "unsupported" rather than guessed. Clarify checks facts and sums; it does not judge whether advice is good. The prompts were tuned on a small set of real AI answers, so treat the accuracy as promising, not proven. Scanned or image-only PDFs are not read. Speech entry uses the browser's built-in recognition (Chrome, Safari).
 
 MIT licensed.
+
+Clarify is by 3Dogs Nexus, [3dogs.ai](https://3dogs.ai).

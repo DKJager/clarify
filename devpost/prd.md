@@ -79,7 +79,7 @@ Input (paste, drop, mic); Check with visible steps; the engine (statements, grou
 - Images and screenshots of answers, web links, very large documents: need OCR and crawling; not needed to prove the kernel.
 - Accounts, history, share by link: the POC stores nothing.
 - Browser extension: a second surface; later.
-- Bigger panel and the full 3Dogs Nexus engine behind it ("XXL light"); paid plans.
+- Bigger panel and a deeper research engine behind it; paid plans.
 
 ## Possible Later Enhancements
 A confidence heat map across the text. Checking a whole document section by section. Letting the reader add a source and re-run.

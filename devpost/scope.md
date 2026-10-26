@@ -41,7 +41,7 @@ Someone pastes a confident AI answer that contains at least one false statement.
 - Images and screenshots of answers, web links, very large documents.
 - Accounts, history of past checks, sharing a check by link.
 - A browser extension that checks an answer in place.
-- A bigger panel of judges and the full 3Dogs Nexus engine behind it ("XXL light"); paid plans.
+- A bigger panel of judges and a deeper research engine behind it; paid plans.
 
 ## Explicitly Cut
 - Chat or follow-up questions: this is a checker, not another chatbot.
